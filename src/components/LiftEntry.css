@@ -1,0 +1,25 @@
+.lift_header {
+  padding-top: 15px;
+  padding-bottom: 5px;
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr;
+  grid-gap: 10px 4px;
+}
+
+.lift_header div {
+  /*background-color: lightblue;*/
+}
+
+.lift_header input {
+  width: 100%;
+  text-align: center;
+}
+
+.weight_text {
+  text-align: right;
+}
+.lift_title {
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align: left;
+}

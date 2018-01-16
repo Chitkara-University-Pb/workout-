@@ -1,0 +1,15 @@
+.App-header {
+  background-color: #222;
+  height: 50px;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-body {
+  padding: 10px;
+}

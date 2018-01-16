@@ -1,0 +1,18 @@
+.routine_entry {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.routine_title {
+  font-weight: bold;
+  color: darkblue;
+  font-size: 1.1em;
+}
+
+.routine_description {
+  font-style: italic; 
+  font-size: 0.9em;
+  font-weight: lighter;
+}
