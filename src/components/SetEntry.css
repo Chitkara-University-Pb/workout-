@@ -1,6 +1,6 @@
 .setEntry {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 2fr 1fr;
   grid-gap: 10px;
   background-color: #fff;
   color: #444;
@@ -12,8 +12,20 @@
   text-align: center;
 }
 
+.setEntry div.doneButton {
+  border: none;
+}
+
 button {
   width: 100%;
   color: white;
+  border-radius: 5px;
+}
+
+button.done {
+  background-color: darkgreen;
+}
+
+button.toDo {
   background-color: steelblue;
 }

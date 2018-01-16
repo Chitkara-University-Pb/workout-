@@ -23,3 +23,7 @@
   font-weight: bold;
   text-align: left;
 }
+
+.setAddRemove button {
+  background-color: steelblue;
+}
