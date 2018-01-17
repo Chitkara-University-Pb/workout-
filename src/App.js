@@ -13,15 +13,15 @@ import './App.css';
 const store = configureStore();
 
 console.log(store.getState())
-
 // controls the switching stuff
 const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={Login}/>
       <Route exact path='/chooseWorkout' component={WorkoutChoose}/>
       <Route exact path='/routineList' component={RoutineList}/>
       <Route exact path='/setRecorder' component={SetRecorder}/>
+      <Route exact path='/' component={Login}/>
+      <Route exact path='/access_token*' component={Login}/>
     </Switch>
   </main>
 )

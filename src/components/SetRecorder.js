@@ -1,49 +1,42 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import LiftEntry from './LiftEntry';
-import './RoutineList.css';
+import './SetRecorder.css';
 
 import {setCurrentRoutine} from '../redux/actions';
 
-// these will get replaced with the dropbox stuff soon.
-const routine = {
-  name:'531 Beginner',
-  description: 'A simple 3 day a week routine.' ,
-  exercises: [
-    {
-      exercise:'Front Squat',
-      sets: [
-        {percent: 45, reps: 5},  
-        {percent: 60, reps: 5},  
-        {percent: 65, reps: 5},  
-        {percent: 75, reps: 3},  
-      ]
-    },
-    {
-      exercise:'Bench Press',
-      sets: [
-        {percent: 45, reps: 5},  
-        {percent: 60, reps: 5},  
-        {percent: 70, reps: 3},  
-        {percent: 80, reps: 3},  
-        {percent: 90, reps: 3},  
-      ]
-    },
-  ]
-};
-
 
 class SetRecorder extends Component {
+
+  addLift(){
+    console.log('adding a lift, yo')
+    const newExercise = {
+      exercise:'New Lift',
+      sets: [
+        {percent: 100, reps: 5},  
+      ],
+    };
+    
+    // this.setState({
+    //   exercises: [...this.state.exercises, newExercise],
+    // });
+  }
   
   render() {
-    const lift_divs = routine.exercises.map(({exercise, sets}, index) => (
+    console.log()
+    const lift_divs = this.props.routine.exercises.map(({exercise, sets}, index) => (
             <LiftEntry key = {index} exercise = {exercise} sets = {sets}/>));
             
     return (
       <div className="set_recorder">
-        <div>{routine.title}</div>
-        <h3>{routine.title}</h3>
+        <div>{this.props.routine.title}</div>
+        <h3>{this.props.routine.title}</h3>
         {lift_divs}
+        <div>
+          <button onClick = {this.addLift} className = 'addLift'>
+            Add New Lift
+          </button>
+        </div>
       </div>
     );
   }
@@ -52,6 +45,7 @@ class SetRecorder extends Component {
 // this will take the desired parts of the state object and map them 
 // to the props of the component
 const mapStateToProps = (state, ownProps) => ({
+  routine: state.current_routine,
   logged_in: state.dropbox_token.length > 0,
   token: state.dropbox_token
 });

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-
 import SetEntry from './SetEntry';
-import { removeCompletedLift } from '../redux/actions';
+import { removeCompletedLift, addNewSet } from '../redux/actions';
 import './LiftEntry.css';
 
 const calc_lift_weight = (weight, percent) => {
@@ -35,10 +34,11 @@ class LiftEntry extends Component {
   addSet(){
     const last_set = this.state.sets[this.state.sets.length-1];
     
-    // add a new set to the end that is the same as the last one. 
-    this.setState({
-      sets: [...this.state.sets, {...last_set, finished: false}]
-    });
+    this.props.addSet({...last_set, lift:this.props.exercise, finished: false});
+    // // add a new set to the end that is the same as the last one. 
+    // this.setState({
+    //   sets: [...this.state.sets, {...last_set, finished: false}]
+    // });
   }
   
   removeSet(){
@@ -64,9 +64,6 @@ class LiftEntry extends Component {
           ...set, 
           finished: index === i ? !set.finished : set.finished})
       );
-      
-      // dispatch action
-      // this.props.completedSet({...new_sets[index], weight});
       
       this.setState({
         sets: new_sets,
@@ -107,6 +104,7 @@ class LiftEntry extends Component {
           <button onClick = {this.addSet}> Add New Set </button>
           <button onClick = {this.removeSet}> Remove Last Set </button>
         </div>
+        <hr/>
       </div>
     );
   }
@@ -123,6 +121,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   eraseSet: (setInfo) => {
     dispatch(removeCompletedLift(setInfo));
+  },
+  addSet: (newSetInfo) => {
+    dispatch(addNewSet(newSetInfo))
   },
 });
 
